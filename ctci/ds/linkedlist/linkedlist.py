@@ -25,6 +25,34 @@ class LinkedList:
             while curr.getNextNode() is not None:
                 curr = curr.getNextNode()
             curr.setNextNode(node)
+    
+    def insertNodeAtTheBeginning(self, data):
+        node = Node(data)
+        if self.head is None:
+            self.head = node
+        else:
+            node.setNextNode(self.head)
+            self.head = node
+    
+    def insertNodeAt(self, data, index):
+        if abs(index) > self.size():
+            raise ValueError("Invalid index")
+        if index < 0:
+            self.insertNodeAt(data, self.size() + index + 1)
+        elif index == 0:
+            self.insertNodeAtTheBeginning(data)
+        else:
+            node = Node(data)
+            currIndex = 1
+            curr = self.head
+            while currIndex != index:
+                if curr is not None:
+                    curr = curr.getNextNode()
+                    currIndex += 1
+                else: 
+                    raise ValueError("Invalid index")
+            node.setNextNode(curr.getNextNode())
+            curr.setNextNode(node)
 
     def deleteNode(self, data):
         prev = None
@@ -36,6 +64,27 @@ class LinkedList:
             prev = curr
             curr = curr.getNextNode()
         raise ValueError(data + " does not exist in the list")
+
+    def deleteNodeFromTheBeginning(self):
+        self.head = self.head.getNextNode()
+
+    def deleteNodeFromTheEnd(self):
+        if self.head is None:
+            raise Exception("The linked list is empty.")
+        prev = None
+        curr = self.head
+        while curr.getNextNode() is not None:
+            prev = curr
+            curr = curr.getNextNode()
+        prev.setNextNode(None)
+
+    def getLastNode(self):
+        if self.head is None:
+            raise Exception("The linked list is empty.")
+        curr = self.head
+        while curr.getNextNode() is not None:
+            curr = curr.getNextNode()
+        return curr
 
     def size(self):
         size = 0

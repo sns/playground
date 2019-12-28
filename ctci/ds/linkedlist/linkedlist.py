@@ -1,8 +1,9 @@
 class Node:
-    def __init__(self, data=None, nextNode=None):
+    def __init__(self, data = None, nextNode = None):
         self.data = data
         self.nextNode = nextNode
-
+    def __eq__(self, other):
+        return self.getData() == other.getData()
     def getData(self):
         return self.data
     def setData(self, data):
@@ -13,7 +14,7 @@ class Node:
         self.nextNode = nextNode
 
 class LinkedList:
-    def __init__(self, head = None):
+    def __init__(self, head= None):
         self.head = head
     
     def insertNode(self, data):
@@ -108,16 +109,13 @@ class LinkedList:
             print(node.getData())
             node = node.getNextNode()
 
-
-# linkedList = LinkedList()
-# linkedList.insertNode(2)
-# linkedList.insertNode(4)
-# linkedList.insertNode(6)
-# linkedList.insertNode(8)
-# linkedList.insertNode(10)
-# linkedList.printList()
-# print("Found %s: "%linkedList.search(4).getData())
-# print("size is : %s"%(linkedList.size()))
-# linkedList.deleteNode(4)
-# linkedList.printList()
-# print("size is : %s"%(linkedList.size()))
+    def __eq__(self, other):
+        i = self.head
+        j = other.head
+        while i is not None and j is not None:
+            if i != j:
+                return False
+            i = i.getNextNode()
+            j = j.getNextNode()
+        
+        return i is None and j is None

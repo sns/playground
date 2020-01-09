@@ -55,3 +55,4 @@ coverage.xml
 
 # PyBuilder
 target/
+.vscode/settings.json

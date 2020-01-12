@@ -30,8 +30,8 @@ def rotate(m: [[int]], N):
         i = F + 1
         while i < L:
             m[F][i], m[i][L] = m[i][L], m[F][i]
-            m[F][i], m[L][L-i] = m[L][L-i], m[F][i]
-            m[F][i], m[L-i][F] = m[L-i][F], m[F][i]
+            m[F][i], m[L][L-(i-F)] = m[L][L-(i-F)], m[F][i]
+            m[F][i], m[L-(i-F)][F] = m[L-(i-F)][F], m[F][i]
             i += 1
         F += 1
         L -= 1
@@ -52,12 +52,14 @@ def creatMatrix(size: int):
     return m
 
 def solve():
-    s = 2
-    m = creatMatrix(s)
-    rotate(m , s)
-    s = 3
-    m = creatMatrix(s)
-    rotate(m , s)
-    s = 4
-    m = creatMatrix(s)
+    # s = 2
+    # m = creatMatrix(s)
+    # rotate(m , s)
+    # s = 3
+    # m = creatMatrix(s)
+    # rotate(m , s)
+    # s = 4
+    # m = creatMatrix(s)
+    s = 5
+    m = [[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]]    
     rotate(m , s)

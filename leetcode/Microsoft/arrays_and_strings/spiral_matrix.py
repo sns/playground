@@ -51,7 +51,6 @@ class Solution:
         
         return res
 
-
     def spiralOrder1(self, matrix: List[List[int]]) -> List[int]:
         if matrix is None or len(matrix) == 0:
             return []
